@@ -11,13 +11,10 @@ const App = () => {
   return (
     <AppProvider>
       <div className="container">
-        <h1 className="mt-3">Shopping App</h1>
+        <h1 className="mt-3">Company's Budget Allocation</h1>
         <div className="row mt-3">
           <div className="col-sm">
             <CartValue />
-          </div>
-          <div className="col-sm">
-            <Location />
           </div>
         </div>
         <h3 className="mt-3">Shopping Cart</h3>
@@ -31,6 +28,9 @@ const App = () => {
           <div className="col-sm">
             <ItemSelected />
           </div>
+        </div>
+        <div className="col-sm">
+          <Location />
         </div>
       </div>
     </AppProvider>
