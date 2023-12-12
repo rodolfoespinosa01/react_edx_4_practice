@@ -2,26 +2,26 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 
 const ItemSelected = (props) => {
-  const { dispatch } = useContext(AppContext);
+  const { dispatch, Currency } = useContext(AppContext);
 
   const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [allocatedBudget, setAllocatedBudget] = useState("");
   const [action, setAction] = useState("");
 
   const submitEvent = () => {
     const item = {
       name: name,
-      quantity: parseInt(quantity),
+      allocatedBudget: parseInt(allocatedBudget),
     };
 
     if (action === "Reduce") {
       dispatch({
-        type: "RED_QUANTITY",
+        type: "RED_ALLOCATEDBUDGET",
         payload: item,
       });
     } else {
       dispatch({
-        type: "ADD_QUANTITY",
+        type: "ADD_ALLOCATEDBUDGET",
         payload: item,
       });
     }
@@ -33,7 +33,7 @@ const ItemSelected = (props) => {
         <div className="input-group mb-3" style={{ marginLeft: "2rem" }}>
           <div className="input-group-prepend">
             <label className="input-group-text" htmlFor="inputGroupSelect01">
-              Items
+              Department
             </label>
           </div>
           <select
@@ -42,27 +42,27 @@ const ItemSelected = (props) => {
             onChange={(event) => setName(event.target.value)}
           >
             <option defaultValue>Choose...</option>
-            <option value="Shirt" name="Shirt">
+            <option value="Marketing" name="Marketing">
               {" "}
-              Shirt
+              Marketing
             </option>
-            <option value="Dress" name="Dress">
-              Dress
+            <option value="Finance" name="Finance">
+              Finance
             </option>
-            <option value="Jeans" name="Jeans">
-              Jeans
+            <option value="Sales" name="Sales">
+              Sales
             </option>
-            <option value="Dinner set" name="Dinner set">
-              Dinner set
+            <option value="Human Resource" name="Human Resource">
+              Human Resource
             </option>
-            <option value="Bags" name="Bags">
-              Bags
+            <option value="IT" name="IT">
+              IT
             </option>
           </select>
 
           <div className="input-group-prepend" style={{ marginLeft: "2rem" }}>
             <label className="input-group-text" htmlFor="inputGroupSelect02">
-              Quantity
+              Allocation
             </label>
           </div>
           <select
@@ -81,14 +81,15 @@ const ItemSelected = (props) => {
             className="eco"
             style={{ marginLeft: "2rem", marginRight: "8px" }}
           ></span>
-
+          {Currency}
           <input
+            className="ms-1"
             required="required"
             type="number"
             id="cost"
-            value={quantity}
+            value={allocatedBudget}
             style={{ size: 10 }}
-            onChange={(event) => setQuantity(event.target.value)}
+            onChange={(event) => setAllocatedBudget(event.target.value)}
           ></input>
 
           <button
